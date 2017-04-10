@@ -1,8 +1,11 @@
 {
   "name": "react-advanced-search",
   "version": "0.0.0",
-  "private": true,
   "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unbrace/react-advanced-search.git"
+  },
   "files": [
     "lib"
   ],
