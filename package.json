@@ -32,6 +32,7 @@
     "react": "^15.4.2",
     "react-addons-update": "^15.4.2",
     "react-dom": "^15.4.2",
+    "rimraf": "^2.6.1",
     "styled-components": "^1.4.4"
   },
   "peerDependencies": {
@@ -43,7 +44,7 @@
   },
   "scripts": {
     "build": "npm run build:lib && npm run build:flow",
-    "prebuild:lib": "rm -rf lib/*",
+    "prebuild:lib": "rimraf lib/*",
     "build:lib": "babel src --ignore src/stories/* --out-dir lib",
     "build:flow": "flow-copy-source -v -i '{**/test/*.js,**/*.test.js,**/stories/*}' src lib",
     "prepublish": "npm run build",
