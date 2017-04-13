@@ -52,7 +52,7 @@
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "lint-staged": {
-    "*.js": [
+    "src/*.js": [
       "prettier --trailing-comma es5 --single-quote --print-width 100 --write",
       "git add"
     ]
