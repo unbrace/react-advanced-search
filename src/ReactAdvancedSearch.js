@@ -117,7 +117,9 @@ class ReactFilterInput extends React.Component {
 
   handleRemoveFilter = (idx: number) =>
     () => {
-      this.setState(removeFilterFromState(idx));
+      this.setState(removeFilterFromState(idx), () => {
+        this.props.onChange && this.props.onChange(this.state.filters);
+      });
     };
 
   handleEnableFilterValue = (idx: number) =>

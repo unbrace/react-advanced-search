@@ -4,7 +4,7 @@
 [libs]
 node_modules/styled-components/flow-typed/react-native.js
 node_modules/styled-components/flow-typed/danger_v0.x.x.js
-
+flow-typed/npm/lodash_v4.x.x.js
 
 [options]
 esproposal.class_instance_fields=enable
