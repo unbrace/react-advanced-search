@@ -29,6 +29,7 @@ type Option = {
   customValueComponent?: ReactClass<*>,
   data?: Array<{ value: string, label: string }>,
   formatValueDisplay?: (string | Array<string>) => string | React$Element<*> | Array<string>,
+  columnInputOptions?: {},
 };
 
 type Filter = {
@@ -180,10 +181,17 @@ class ReactFilterInput extends React.Component {
   renderValueInput(filter: Filter, idx: number) {
     const config: Option = find(this.props.options, { columnField: filter.column });
     const value = filter.value;
+    const columnInputOptions = config.columnInputOptions || {};
     let errMsg = '';
 
     if (config.type === 'text') {
-      return <FilterValueInput value={value} onChange={this.handleFilterValueChange(idx)} />;
+      return (
+        <FilterValueInput
+          value={value}
+          onChange={this.handleFilterValueChange(idx)}
+          {...columnInputOptions}
+        />
+      );
     }
 
     if (config.type === 'select' || config.type === 'multiselect') {
@@ -194,6 +202,7 @@ class ReactFilterInput extends React.Component {
             value={value}
             onChange={this.handleFilterValueChange(idx)}
             multi={config.type === 'multiselect'}
+            {...columnInputOptions}
           />
         );
       } else {
@@ -204,7 +213,13 @@ class ReactFilterInput extends React.Component {
     if (config.type === 'custom') {
       if (config.customValueComponent) {
         const Component = config.customValueComponent;
-        return <Component onChange={this.handleFilterValueChange(idx)} value={value} />;
+        return (
+          <Component
+            onChange={this.handleFilterValueChange(idx)}
+            value={value}
+            {...columnInputOptions}
+          />
+        );
       } else {
         errMsg = `Option is missing 'customValueComponent' property.`;
       }

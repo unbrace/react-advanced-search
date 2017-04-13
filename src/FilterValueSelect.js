@@ -67,7 +67,7 @@ class FilterValueSelect extends React.Component {
   };
 
   render() {
-    const { options, multi } = this.props;
+    const { value, options, onChange, multi, ...other } = this.props;
     const single = !multi;
 
     return (
@@ -78,6 +78,7 @@ class FilterValueSelect extends React.Component {
           options={options}
           onChange={this.handleChange}
           onBlur={this.handleBlur}
+          onClose={this.handleBlur}
           autoFocus={true}
           autoBlur={single}
           openOnFocus={true}
@@ -86,6 +87,7 @@ class FilterValueSelect extends React.Component {
           arrowRenderer={() => {}}
           multi={multi}
           joinValues={multi}
+          {...other}
         />
       </SelectWrapper>
     );
