@@ -54,6 +54,10 @@ type Props = {
    * See also: https://github.com/JedWatson/react-select#further-options
    */
   filterColumnSelectOptions?: {},
+  /**
+   *
+   */
+  onChange?: () => Array<Filter>,
 };
 
 type State = {
@@ -149,10 +153,15 @@ class ReactFilterInput extends React.Component {
 
   handleFilterValueChange = (idx: number) =>
     (value: string | Array<string>) => {
-      this.setState(state => ({
-        filters: update(state.filters, { [idx]: { value: { $set: value } } }),
-        activeFilterValueIdx: -1,
-      }));
+      this.setState(
+        state => ({
+          filters: update(state.filters, { [idx]: { value: { $set: value } } }),
+          activeFilterValueIdx: -1,
+        }),
+        () => {
+          this.props.onChange && this.props.onChange(this.state.filters);
+        }
+      );
 
       if (value) {
         this.handleEnableFilter(idx + 1)();

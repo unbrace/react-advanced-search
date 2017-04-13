@@ -65,7 +65,7 @@ injectGlobal`
 storiesOf('ReactAdvancedSearch', module)
   .add('basic input', () => <ReactAdvancedSearch options={[options[0]]} />)
   .add('placeholder', () => (
-    <ReactAdvancedSearch options={[options[0], options[1]]} placeholder="Filter by name or genre" />
+    <ReactAdvancedSearch options={[options[0], options[2]]} placeholder="Filter by name or actor" />
   ))
   .add('multiselect', () => (
     <ReactAdvancedSearch options={options} placeholder="Filter by name, genre or actor" />
@@ -202,5 +202,14 @@ storiesOf('ReactAdvancedSearch', module)
           filters={[{ column: 'name', value: 'alien' }]}
         />
       </ThemeProvider>
+    );
+  })
+  .add('Action: onChange', () => {
+    return (
+      <ReactAdvancedSearch
+        onChange={action('changed')}
+        options={options}
+        placeholder="Filter by name, genre or actor"
+      />
     );
   });
