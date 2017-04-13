@@ -1,8 +1,9 @@
 // @flow
 import styled from 'styled-components';
+import getTheme from './getTheme';
 
 const Placeholder = styled.div`
-    font-size: 14px;
+    font-size: ${getTheme('fontSize')};
     color: #ccc;
 `;
 

@@ -4,7 +4,7 @@ import getTheme from './getTheme';
 
 const FilterColumnValue = styled.div`
     color: ${getTheme('value.color')};
-    font-size: 0.75em;
+    font-size: ${getTheme('fontSize')};
     line-height: 1;
     text-decoration: underline;
 

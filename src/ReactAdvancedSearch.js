@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import ReactDOM from 'react-dom';
 import update from 'react-addons-update';
 import find from 'lodash/find';
 
@@ -12,7 +11,6 @@ import SelectWrapper from './components/SelectWrapper';
 import Placeholder from './components/Placeholder';
 import FakeInput from './components/FakeInput';
 import FakeInputBackground from './components/FakeInputBackground';
-import Input from './components/Input';
 import FilterColumnValue from './components/FilterColumnValue';
 import FilterColumnKey from './components/FilterColumnKey';
 import FilterColumn from './components/FilterColumn';

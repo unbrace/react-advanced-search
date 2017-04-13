@@ -183,8 +183,15 @@ storiesOf('ReactAdvancedSearch', module)
     const theme = {
       reactFilterInput: {
         borderRadius: '0',
+        height: '50px',
+        lineHeight: '16.666px',
+        fontFamily: 'Trebuchet MS',
+        fontSize: '16px',
         value: {
-          color: 'hotpink',
+          color: 'green',
+        },
+        select: {
+          minWidth: '300px',
         },
       },
     };

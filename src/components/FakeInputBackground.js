@@ -1,10 +1,11 @@
 // @flow
 import styled from 'styled-components';
+import getTheme from './getTheme';
 
 const FakeInputBackground = styled.div`
     background: none;
 
-    height: 36px;
+    height: ${getTheme('height')};
     position: absolute;
     top: 0;
     left: 0;
