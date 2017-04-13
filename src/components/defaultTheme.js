@@ -11,6 +11,16 @@ export default {
     },
     select: {
       minWidth: '200px',
+      color: '#333',
+      selectValue: {
+        backgroundColor: '#ebf5ff',
+        borderRadius: '2px',
+        border: '1px solid #c2e0ff',
+        color: '#007eff',
+        fontSize: '0.9em',
+        marginTop: '2px',
+        fontWeight: 'normal',
+      },
     },
   },
 };

@@ -188,10 +188,20 @@ storiesOf('ReactAdvancedSearch', module)
         fontFamily: 'Trebuchet MS',
         fontSize: '16px',
         value: {
-          color: 'green',
+          color: '#1C1D25',
         },
         select: {
           minWidth: '300px',
+          color: '#1C1D25',
+          selectValue: {
+            backgroundColor: '#1fa67a',
+            borderRadius: '0',
+            border: 'none',
+            color: '#f3f3f3',
+            fontSize: '16px',
+            marginTop: '3px',
+            fontWeight: 'bold',
+          },
         },
       },
     };

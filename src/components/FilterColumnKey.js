@@ -7,7 +7,6 @@ const FilterColumnKey = styled.div`
     font-size: ${getTheme('fontSize')};
     line-height: 1;
     text-transform: uppercase;
-
     float: left;
     margin-right: 6px;
 `;
