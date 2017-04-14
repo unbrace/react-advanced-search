@@ -62,8 +62,8 @@ class FilterValueSelect extends React.Component {
     // Wait for setState of 'handleChange()' if both change and blur events happened
     setTimeout(() => {
       const value = this.state.value;
-      if (value) {
-        this.props.onChange(value instanceof Array && value.length === 0 ? '' : value);
+      if (value && value instanceof Array && value.length > 0) {
+        this.props.onChange(value);
       }
     });
   };
