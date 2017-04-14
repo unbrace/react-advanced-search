@@ -59,6 +59,18 @@ const Select = styled(RSelect)`
     }
   }
 
+  &.Select--single > .Select-control .Select-value {
+    background-color: ${getTheme('backgroundColor')} !important;
+    border: none;
+    margin-top: 0;
+    padding: 0;
+    .Select-value-label {
+      color: ${getTheme('select.color')} !important;
+      font-size: ${getTheme('fontSize')};
+      font-weight: normal;
+    }
+  }
+
   /*.Select-arrow-zone {*/
     /*display: none;*/
   /*}*/

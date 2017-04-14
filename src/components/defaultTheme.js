@@ -5,7 +5,7 @@ export default {
     height: '36px',
     lineHeight: '24px',
     fontFamily: 'inherit',
-    fontSize: '0.75em',
+    fontSize: '14px',
     backgroundColor: '#fff',
     placeHolderColor: '#ccc',
     filterColumn: {
@@ -31,7 +31,7 @@ export default {
         borderRadius: '2px',
         border: '1px solid #c2e0ff',
         color: '#007eff',
-        fontSize: '0.9em',
+        fontSize: '12px',
         marginTop: '6px',
         fontWeight: 'normal',
         hoverBackground: '#d8eafd',
