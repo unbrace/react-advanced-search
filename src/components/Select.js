@@ -7,8 +7,10 @@ const Select = styled(RSelect)`
   .Select-control {
     background-color: ${getTheme('backgroundColor')} !important;
     border: none;
+    border-radius: ${getTheme('borderRadius')};
     height: ${getTheme('select.height')};
     font-size: ${getTheme('fontSize')};
+    margin-top: -1px;
 
     .Select-placeholder {
       color: ${getTheme('placeHolderColor')};
@@ -36,9 +38,14 @@ const Select = styled(RSelect)`
     }
 
     & + .Select-menu-outer {
+      border-radius: ${getTheme('borderRadius')};
+      border-top: ${getTheme('border')};
+      margin-top: ${getTheme('select.selectOption.menuTopMargin')};
+      left: ${getTheme('select.selectOption.menuLeft')};
       .Select-option {
         color: ${getTheme('select.color')};
         background-color: ${getTheme('backgroundColor')};
+        padding: ${getTheme('select.selectOption.padding')};
 
         &.is-selected {
         		background-color: ${getTheme('select.selectOption.selectedBackground')} !important;
@@ -69,6 +76,12 @@ const Select = styled(RSelect)`
       font-size: ${getTheme('fontSize')};
       font-weight: normal;
     }
+  }
+
+  &.is-focused:not(.is-open) > .Select-control {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   /*.Select-arrow-zone {*/

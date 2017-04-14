@@ -25,7 +25,7 @@ export default {
     select: {
       minWidth: '200px',
       color: '#333',
-      height: '34px',
+      height: '32px',
       selectValue: {
         backgroundColor: '#ebf5ff',
         borderRadius: '2px',
@@ -38,6 +38,9 @@ export default {
         hoverColor: '#0071e6',
       },
       selectOption: {
+        menuTopMargin: '0',
+        menuLeft: '0',
+        padding: '8px 10px',
         focusedBackground: '#f2f9fc',
         selectedBackground: '#f5faff',
         disabledColor: 'rgba(51, 51, 51, 0.4)',
