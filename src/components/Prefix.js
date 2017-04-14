@@ -7,7 +7,6 @@ const Prefix = styled.div`
     margin-left: -12px;
     margin-top: 0px;
     padding: 6px 12px;
-    height: 100%;
 `;
 
 export default Prefix;
