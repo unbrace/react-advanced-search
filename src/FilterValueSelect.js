@@ -88,6 +88,7 @@ class FilterValueSelect extends React.Component {
           clearable={false}
           arrowRenderer={() => {}}
           multi={multi}
+          tabSelectsValue={false}
           joinValues={multi}
           {...other}
         />
