@@ -57,7 +57,7 @@ export const convertToDateIfPossible = maybeDate => {
 
   // Match 16/09/2016, 6/9/2016, 6-9-2016, ...
   const matchFullDate = maybeDate.match(
-    /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-](\d{4})$/
+    /^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])[/-](\d{4})$/
   );
 
   if (matchFullDate) {
@@ -70,7 +70,7 @@ export const convertToDateIfPossible = maybeDate => {
   }
 
   // Match 16/09, 6/9, 6-9
-  const matchWithoutYear = maybeDate.match(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])$/);
+  const matchWithoutYear = maybeDate.match(/^(0?[1-9]|[12][0-9]|3[01])[/-](0?[1-9]|1[012])$/);
   if (matchWithoutYear) {
     const mWithoutYear = moment.utc(
       currentYear + '-' + addZero(matchWithoutYear[2]) + '-' + addZero(matchWithoutYear[1])

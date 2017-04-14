@@ -55,6 +55,7 @@ const options = [
   },
 ];
 
+// eslint-disable-next-line
 injectGlobal`
   body {
     font-family: sans-serif;
@@ -66,6 +67,9 @@ storiesOf('ReactAdvancedSearch', module)
   .add('basic input', () => <ReactAdvancedSearch options={[options[0]]} />)
   .add('placeholder', () => (
     <ReactAdvancedSearch options={[options[0], options[2]]} placeholder="Filter by name or actor" />
+  ))
+  .add('prefix', () => (
+    <ReactAdvancedSearch options={[options[0]]} placeholder="Search" prefix={<i>ಠ_ಠ</i>} />
   ))
   .add('multiselect', () => (
     <ReactAdvancedSearch options={options} placeholder="Filter by name, genre or actor" />

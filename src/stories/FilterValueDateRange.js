@@ -104,7 +104,7 @@ class FilterValueDateRange extends React.Component {
 
   render() {
     const now = new Date();
-    const placeholder = `e.g. ${addZero(now.getDate())}${addZero(now.getMonth())}`;
+    const placeholder = `e.g. ${addZero(now.getDate())}${addZero(now.getMonth() + 1)}`;
 
     return (
       <div>

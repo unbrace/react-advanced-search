@@ -15,6 +15,7 @@ import FilterColumnValue from './components/FilterColumnValue';
 import FilterColumnKey from './components/FilterColumnKey';
 import FilterColumn from './components/FilterColumn';
 import RemoveFilterButton from './components/RemoveFilterButton';
+import Prefix from './components/Prefix';
 
 import type { ReactSelectOption } from './types';
 
@@ -57,6 +58,10 @@ type Props = {
    *
    */
   onChange?: () => Array<Filter>,
+  /**
+   *
+   */
+  prefix?: React$Element<*>,
 };
 
 type State = {
@@ -72,15 +77,14 @@ const buildOptionsForSelect = options => {
   }));
 };
 
-const removeFilterFromState = (idx: number) =>
-  (state: State): State => {
-    const filters = update(state.filters, { $splice: [[idx, 1]] });
-    return {
-      activeFilterIdx: -1,
-      activeFilterValueIdx: -1,
-      filters,
-    };
+const removeFilterFromState = (idx: number) => (state: State): State => {
+  const filters = update(state.filters, { $splice: [[idx, 1]] });
+  return {
+    activeFilterIdx: -1,
+    activeFilterValueIdx: -1,
+    filters,
   };
+};
 
 class ReactFilterInput extends React.Component {
   defaultProps = {
@@ -101,75 +105,70 @@ class ReactFilterInput extends React.Component {
     };
   }
 
-  handleEnableFilter = (idx: number) =>
-    () => {
+  handleEnableFilter = (idx: number) => () => {
+    this.setState((state: State) => {
+      const filters = state.filters.length === idx
+        ? update(state.filters, { $push: [{ column: '', value: '' }] })
+        : state.filters;
+      return {
+        activeFilterIdx: idx,
+        activeFilterValueIdx: -1,
+        filters,
+      };
+    });
+  };
+
+  handleRemoveFilter = (idx: number) => () => {
+    this.setState(removeFilterFromState(idx), () => {
+      this.props.onChange && this.props.onChange(this.state.filters);
+    });
+  };
+
+  handleEnableFilterValue = (idx: number) => () => {
+    this.setState({
+      activeFilterIdx: -1,
+      activeFilterValueIdx: idx,
+    });
+  };
+
+  handleBlur = (idx: number) => () => {
+    setTimeout(() =>
       this.setState((state: State) => {
-        const filters = state.filters.length === idx
-          ? update(state.filters, { $push: [{ column: '', value: '' }] })
-          : state.filters;
-        return {
-          activeFilterIdx: idx,
-          activeFilterValueIdx: -1,
-          filters,
-        };
-      });
-    };
-
-  handleRemoveFilter = (idx: number) =>
-    () => {
-      this.setState(removeFilterFromState(idx), () => {
-        this.props.onChange && this.props.onChange(this.state.filters);
-      });
-    };
-
-  handleEnableFilterValue = (idx: number) =>
-    () => {
-      this.setState({
-        activeFilterIdx: -1,
-        activeFilterValueIdx: idx,
-      });
-    };
-
-  handleBlur = (idx: number) =>
-    () => {
-      setTimeout(() =>
-        this.setState((state: State) => {
-          if (state.filters[idx] && state.filters[idx].column === '') {
-            return removeFilterFromState(idx)(state);
-          }
-          return {
-            activeFilterIdx: -1,
-          };
-        }));
-    };
-
-  handleFilterColumnChange = (idx: number) =>
-    (data: ReactSelectOption) => {
-      this.setState((state: State) => ({
-        filters: update(state.filters, { [idx]: { column: { $set: data.value } } }),
-        activeFilterIdx: -1,
-        activeFilterValueIdx: idx,
-      }));
-    };
-
-  handleFilterValueChange = (idx: number) =>
-    (value: string | Array<string>) => {
-      this.setState(
-        state => ({
-          filters: update(state.filters, { [idx]: { value: { $set: value } } }),
-          activeFilterValueIdx: -1,
-        }),
-        () => {
-          this.props.onChange && this.props.onChange(this.state.filters);
+        if (state.filters[idx] && state.filters[idx].column === '') {
+          return removeFilterFromState(idx)(state);
         }
-      );
+        return {
+          activeFilterIdx: -1,
+        };
+      })
+    );
+  };
 
-      if (value) {
-        this.handleEnableFilter(idx + 1)();
-      } else {
-        this.handleRemoveFilter(idx)();
+  handleFilterColumnChange = (idx: number) => (data: ReactSelectOption) => {
+    this.setState((state: State) => ({
+      filters: update(state.filters, { [idx]: { column: { $set: data.value } } }),
+      activeFilterIdx: -1,
+      activeFilterValueIdx: idx,
+    }));
+  };
+
+  handleFilterValueChange = (idx: number) => (value: string | Array<string>) => {
+    this.setState(
+      state => ({
+        filters: update(state.filters, { [idx]: { value: { $set: value } } }),
+        activeFilterValueIdx: -1,
+      }),
+      () => {
+        this.props.onChange && this.props.onChange(this.state.filters);
       }
-    };
+    );
+
+    if (value) {
+      this.handleEnableFilter(idx + 1)();
+    } else {
+      this.handleRemoveFilter(idx)();
+    }
+  };
 
   handleSelectRef = (select: ReactClass<*>) => {
     if (!select) {
@@ -239,14 +238,10 @@ class ReactFilterInput extends React.Component {
   }
 
   render() {
-    const {
-      options,
-      placeholder,
-      filterColumnSelectOptions,
-    } = this.props;
+    const { options, placeholder, filterColumnSelectOptions, prefix } = this.props;
 
-    const noFiltersActive = this.state.activeFilterIdx === -1 &&
-      this.state.activeFilterValueIdx === -1;
+    const noFiltersActive =
+      this.state.activeFilterIdx === -1 && this.state.activeFilterValueIdx === -1;
 
     return (
       <FakeInput>
@@ -255,7 +250,10 @@ class ReactFilterInput extends React.Component {
           onClick={noFiltersActive && this.handleEnableFilter(this.state.filters.length)}
         />
 
-        {/* TODO: <Prefix>{prefix}</Prefix> */}
+        {prefix &&
+          <Prefix>
+            {prefix}
+          </Prefix>}
 
         {this.state.filters.map((filter, idx) => (
           <FilterColumn key={idx}>
@@ -298,7 +296,7 @@ class ReactFilterInput extends React.Component {
             {placeholder}
           </Placeholder>}
 
-        {/* TODO: <Suffix>{prefix}</Suffix> */}
+        {/* TODO: <Suffix>{suffix}</Suffix> */}
 
       </FakeInput>
     );
