@@ -5,7 +5,7 @@ import getTheme from './getTheme';
 
 const Select = styled(RSelect)`
   .Select-control {
-    background-color: ${getTheme('backgroundColor')};
+    background-color: ${getTheme('backgroundColor')} !important;
     border: none;
     height: ${getTheme('select.height')};
     font-size: ${getTheme('fontSize')};
@@ -49,8 +49,12 @@ const Select = styled(RSelect)`
         	}
 
         	&.is-disabled {
-        		color: #eee;
+        		color: ${getTheme('select.selectOption.disabledColor')};
         	}
+      }
+
+      .Select-noresults {
+        background-color: ${getTheme('backgroundColor')};
       }
     }
   }
