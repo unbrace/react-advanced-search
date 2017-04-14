@@ -187,12 +187,26 @@ storiesOf('ReactAdvancedSearch', module)
         lineHeight: '16.666px',
         fontFamily: 'Trebuchet MS',
         fontSize: '16px',
-        value: {
-          color: '#1C1D25',
+        backgroundColor: '#f3f3f3',
+        placeHolderColor: 'rgba(28, 29, 39, 0.5)',
+        filterColumn: {
+          value: {
+            color: '#1C1D25',
+          },
+          key: {
+            color: '#1fa67a',
+          },
+          remove: {
+            color: '#f3f3f3',
+            backgroundColor: '#1fa67a',
+            hoverBackground: '#024047',
+            borderRadius: '0',
+          },
         },
         select: {
           minWidth: '300px',
           color: '#1C1D25',
+          height: '41px',
           selectValue: {
             backgroundColor: '#1fa67a',
             borderRadius: '0',
@@ -201,6 +215,13 @@ storiesOf('ReactAdvancedSearch', module)
             fontSize: '16px',
             marginTop: '3px',
             fontWeight: 'bold',
+            hoverBackground: '#024047',
+            hoverColor: '#f3f3f3',
+          },
+          selectOption: {
+            focusedBackground: 'rgba(28, 29, 39, 0.1)',
+            selectedBackground: 'rgba(28, 29, 39, 0.2)',
+            disabledColor: '#eee',
           },
         },
       },

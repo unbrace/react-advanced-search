@@ -4,7 +4,7 @@ import getTheme from './getTheme';
 
 const Placeholder = styled.div`
     font-size: ${getTheme('fontSize')};
-    color: #ccc;
+    color: ${getTheme('placeHolderColor')};
 `;
 
 export default Placeholder;

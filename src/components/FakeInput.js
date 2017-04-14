@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import getTheme from './getTheme';
 
 const FakeInput = styled.div`
-    background: #fff;
+    background: ${getTheme('backgroundColor')};
     border: ${getTheme('border')};
     border-radius: ${getTheme('borderRadius')};
     box-sizing: border-box;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import getTheme from './getTheme';
 
 const FilterColumnValue = styled.div`
-    color: ${getTheme('value.color')};
+    color: ${getTheme('filterColumn.value.color')};
     font-size: ${getTheme('fontSize')};
     line-height: 1;
     text-decoration: underline;

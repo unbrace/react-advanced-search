@@ -1,11 +1,12 @@
 // @flow
 import styled from 'styled-components';
+import getTheme from './getTheme';
 
 const RemoveFilterButton = styled.button`
-    background: #ccc;
+    background: ${getTheme('filterColumn.remove.backgroundColor')};
     border: none;
-    border-radius: 100%;
-    color: #fff;
+    border-radius: ${getTheme('filterColumn.remove.borderRadius')};
+    color: ${getTheme('filterColumn.remove.color')};
     cursor: pointer;
     line-height: 0;
 
@@ -16,7 +17,7 @@ const RemoveFilterButton = styled.button`
     width: 14px;
 
     &:hover {
-      background: #aaa;
+      background: ${getTheme('filterColumn.remove.hoverBackground')};
     }
     &:focus {
       outline: none;

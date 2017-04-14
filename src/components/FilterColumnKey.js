@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import getTheme from './getTheme';
 
 const FilterColumnKey = styled.div`
-    color: #ccc;
+    color: ${getTheme('filterColumn.key.color')};
     font-size: ${getTheme('fontSize')};
     line-height: 1;
     text-transform: uppercase;
