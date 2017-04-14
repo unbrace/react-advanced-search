@@ -88,7 +88,7 @@ class FilterValueDateRange extends React.Component {
     () => {
       this.setState(
         state => ({
-          [fromTo]: convertToDateIfPossible(this.state[fromTo]) || this.state[fromTo],
+          [fromTo]: convertToDateIfPossible(state[fromTo]) || state[fromTo],
         }),
         () => {
           if (submit) {
