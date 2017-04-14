@@ -56,7 +56,9 @@
     "build:flow": "flow-copy-source -v -i '{**/test/*.js,**/*.test.js,**/stories/*}' src lib",
     "prepublish": "npm run build",
     "precommit": "lint-staged",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "fix": "eslint --fix src",
+    "lint": "eslint src"
   },
   "lint-staged": {
     "src/*.js": [

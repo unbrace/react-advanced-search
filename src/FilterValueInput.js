@@ -4,7 +4,7 @@ import Input from './components/Input';
 
 type Props = {
   value: string | Array<*>,
-  onChange: (string) => void,
+  onChange: string => void,
 };
 
 type State = {
@@ -57,8 +57,6 @@ class FilterValueInput extends React.Component {
    * Handle special keyboard inputs
    */
   handleKeyDown = (evt: SyntheticKeyboardEvent) => {
-    const target = evt.target;
-
     if (evt.keyCode === ENTER) {
       this.props.onChange(this.state.value);
     } else if (evt.keyCode === BACKSPACE && !this.state.value) {
@@ -70,8 +68,6 @@ class FilterValueInput extends React.Component {
   };
 
   render() {
-    const { value } = this.props;
-
     return (
       <Input
         onKeyDown={this.handleKeyDown}
