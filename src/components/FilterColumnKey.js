@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components';
-import getTheme from './getTheme';
+import getTheme from '../utils/getTheme';
 
 const FilterColumnKey = styled.div`
     color: ${getTheme('filterColumn.key.color')};

@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components';
 import RSelect from 'react-select';
-import getTheme from './getTheme';
+import getTheme from '../utils/getTheme';
 
 const Select = styled(RSelect)`
   .Select-control {

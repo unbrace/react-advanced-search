@@ -1,6 +1,6 @@
 // @flow
 import styled from 'styled-components';
-import getTheme from './getTheme';
+import getTheme from '../utils/getTheme';
 
 const RemoveFilterButton = styled.button`
     background: ${getTheme('filterColumn.remove.backgroundColor')};
