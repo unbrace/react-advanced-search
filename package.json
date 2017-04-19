@@ -31,6 +31,7 @@
     "eslint-plugin-react": "6.4.1",
     "flow-bin": "^0.44.0",
     "flow-copy-source": "^1.1.0",
+    "flow-coverage-report": "^0.3.0",
     "husky": "^0.13.3",
     "lint-staged": "^3.4.0",
     "lodash": "^4.17.4",
@@ -58,7 +59,9 @@
     "precommit": "lint-staged",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "fix": "eslint --fix src",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -x 'src/components/*.js'",
+    "flow:coverage:export": "npm run flow:coverage -- -t html -t json -t text"
   },
   "lint-staged": {
     "src/*.js": [
