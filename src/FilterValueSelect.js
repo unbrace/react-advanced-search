@@ -64,6 +64,8 @@ class FilterValueSelect extends React.Component {
       const value = this.state.value;
       if (value && value instanceof Array && value.length > 0) {
         this.props.onChange(value);
+      } else if (value && value !== '') {
+        this.props.onChange(value);
       }
     });
   };
