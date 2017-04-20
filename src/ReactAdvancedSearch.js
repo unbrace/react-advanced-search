@@ -21,13 +21,16 @@ import type { ReactSelectOption } from './types';
 
 import 'react-select/dist/react-select.css';
 
+type StringOrArray = string | Array<string>;
+type FormatValueDisplay = StringOrArray => string | React$Element<*> | Array<string>;
+
 type Option = {
   columnField: string,
   type: 'text' | 'select' | 'multiselect' | 'custom',
   columnDisplay?: string | ReactClass<*>,
   customValueComponent?: ReactClass<*>,
   data?: Array<{ value: string, label: string }>,
-  formatValueDisplay?: (string | Array<string>) => string | React$Element<*> | Array<string>,
+  formatValueDisplay?: FormatValueDisplay,
   columnInputOptions?: {},
 };
 
@@ -64,6 +67,10 @@ type Props = {
   prefix?: React$Element<*>,
 };
 
+type DefaultProps = {
+  placeholder: string,
+};
+
 type State = {
   activeFilterIdx: number,
   activeFilterValueIdx: number,
@@ -87,7 +94,7 @@ const removeFilterFromState = (idx: number) => (state: State): State => {
 };
 
 class ReactFilterInput extends React.Component {
-  defaultProps = {
+  defaultProps: DefaultProps = {
     placeholder: '',
   };
 

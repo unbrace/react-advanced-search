@@ -234,8 +234,6 @@ storiesOf('ReactAdvancedSearch', module)
       },
     };
 
-    // TODO: Custom filter column: @see "GravatarOption" https://github.com/JedWatson/react-select/blob/master/examples/src/components/CustomComponents.js
-
     return (
       <ThemeProvider theme={theme}>
         <ReactAdvancedSearch
