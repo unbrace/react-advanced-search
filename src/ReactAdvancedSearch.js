@@ -22,7 +22,7 @@ import type { ReactSelectOption } from './types';
 import 'react-select/dist/react-select.css';
 
 type StringOrArray = string | Array<string>;
-type FormatValueDisplay = StringOrArray => string | React$Element<*> | Array<string>;
+type FormatValueDisplay = (value: StringOrArray) => string | React$Element<*> | Array<string>;
 
 type Option = {
   columnField: string,
