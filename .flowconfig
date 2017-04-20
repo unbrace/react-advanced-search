@@ -1,5 +1,6 @@
 [ignore]
 .*/styled-components/src/.*
+.*/flow-coverage-report/src/.*
 
 [libs]
 node_modules/styled-components/flow-typed/react-native.js
