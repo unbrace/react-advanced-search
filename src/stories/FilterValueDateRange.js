@@ -11,9 +11,11 @@ const Input = styled.input`
     width: 75px;
 `;
 
+type StringOrArray = string | Array<string>;
+
 type Props = {
   value: string | Array<*>,
-  onChange: (string | Array<string>) => void,
+  onChange(StringOrArray):  void,
 };
 
 type FromTo = 'from' | 'to';
