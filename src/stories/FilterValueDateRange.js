@@ -15,7 +15,7 @@ type StringOrArray = string | Array<string>;
 
 type Props = {
   value: string | Array<*>,
-  onChange(StringOrArray):  void,
+  onChange(StringOrArray): void,
 };
 
 type FromTo = 'from' | 'to';
@@ -28,7 +28,7 @@ const ENTER = 13;
 const BACKSPACE = 8;
 const TAB = 9;
 
-const addZero = (d: number) => d < 10 ? `0${d}` : d;
+const addZero = (d: number) => (d < 10 ? `0${d}` : d);
 
 class FilterValueDateRange extends React.Component {
   props: Props;
@@ -53,18 +53,17 @@ class FilterValueDateRange extends React.Component {
     }
   }
 
-  handleChange = (fromTo: FromTo) =>
-    (evt: SyntheticEvent) => {
-      if (evt.target instanceof HTMLInputElement) {
-        const value = evt.target.value;
-        this.setState(state => ({
-          [fromTo]: value,
-        }));
-      }
-    };
+  handleChange = (fromTo: FromTo) => (evt: SyntheticEvent) => {
+    if (evt.target instanceof HTMLInputElement) {
+      const value = evt.target.value;
+      this.setState(state => ({
+        [fromTo]: value,
+      }));
+    }
+  };
 
   handleKeyDownFrom = (evt: SyntheticKeyboardEvent) => {
-    const target = evt.target;
+    // const target = evt.target;
 
     if (evt.keyCode === ENTER) {
       this.inputTo && this.inputTo.focus();
@@ -75,7 +74,7 @@ class FilterValueDateRange extends React.Component {
   };
 
   handleKeyDownTo = (evt: SyntheticKeyboardEvent) => {
-    const target = evt.target;
+    // const target = evt.target;
     const handleBlurTo = this.handleBlur('to', true);
 
     if (evt.keyCode === ENTER || evt.keyCode === TAB) {
@@ -86,23 +85,22 @@ class FilterValueDateRange extends React.Component {
     }
   };
 
-  handleBlur = (fromTo: FromTo, submit: boolean = false) =>
-    () => {
-      this.setState(
-        state => ({
-          [fromTo]: convertToDateIfPossible(state[fromTo]) || state[fromTo],
-        }),
-        () => {
-          if (submit) {
-            if (!this.state.from || !this.state.to) {
-              this.props.onChange('');
-            } else {
-              this.props.onChange([this.state.from, this.state.to]);
-            }
+  handleBlur = (fromTo: FromTo, submit: boolean = false) => () => {
+    this.setState(
+      state => ({
+        [fromTo]: convertToDateIfPossible(state[fromTo]) || state[fromTo],
+      }),
+      () => {
+        if (submit) {
+          if (!this.state.from || !this.state.to) {
+            this.props.onChange('');
+          } else {
+            this.props.onChange([this.state.from, this.state.to]);
           }
         }
-      );
-    };
+      }
+    );
+  };
 
   render() {
     const now = new Date();
@@ -112,7 +110,7 @@ class FilterValueDateRange extends React.Component {
       <div>
         <Input
           autoFocus={true}
-          innerRef={_c => this.inputFrom = _c}
+          innerRef={_c => (this.inputFrom = _c)}
           value={this.state.from}
           onChange={this.handleChange('from')}
           onBlur={this.handleBlur('from')}
@@ -121,7 +119,7 @@ class FilterValueDateRange extends React.Component {
         />
         {' - '}
         <Input
-          innerRef={_c => this.inputTo = _c}
+          innerRef={_c => (this.inputTo = _c)}
           value={this.state.to}
           onChange={this.handleChange('to')}
           onBlur={this.handleBlur('to', true)}

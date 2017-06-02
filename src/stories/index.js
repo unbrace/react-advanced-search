@@ -179,6 +179,10 @@ storiesOf('ReactAdvancedSearch', module)
             },
           ]}
           placeholder="Date, Parcel, Delivery, Shipment, Material, ID, Vendor, Container nr, License plate, Scenario, Process step, Status"
+          filterColumnSelectOptions={{
+            matchPos: 'start',
+            matchProp: 'label',
+          }}
         />
       </ThemeProvider>
     );
