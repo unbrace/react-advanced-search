@@ -94,7 +94,7 @@ const removeFilterFromState = (idx: number) => (state: State): State => {
 };
 
 class ReactFilterInput extends React.Component {
-  defaultProps: DefaultProps = {
+  static defaultProps: DefaultProps = {
     placeholder: '',
   };
 
@@ -254,7 +254,9 @@ class ReactFilterInput extends React.Component {
       <FakeInput>
 
         <FakeInputBackground
-          onClick={noFiltersActive && this.handleEnableFilter(this.state.filters.length)}
+          onClick={
+            noFiltersActive ? this.handleEnableFilter(this.state.filters.length) : () => null
+          }
         />
 
         {prefix &&
